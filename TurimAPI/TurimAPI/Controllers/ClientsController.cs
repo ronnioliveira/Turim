@@ -39,6 +39,7 @@ namespace TurimAPI.Controllers
 
             db.Entry(client).State = EntityState.Modified;
 
+            client.RegisterDate = DateTime.Now;
             try
             {
                 db.SaveChanges();
@@ -60,6 +61,8 @@ namespace TurimAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            client.RegisterDate = DateTime.Now;
+            
             db.Clients.Add(client);
             db.SaveChanges();
 
